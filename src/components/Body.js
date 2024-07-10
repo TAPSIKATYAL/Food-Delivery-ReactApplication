@@ -1,6 +1,7 @@
  import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import Banner from "./Banner";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]); 
   useEffect(()=>{
@@ -20,6 +21,7 @@ const Body = () => {
   };
   return (
     <div className="body">
+      <Banner/>
       <div className="search">Search</div>
       <button
         className="filter-btn"
