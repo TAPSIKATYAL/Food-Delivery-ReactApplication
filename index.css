@@ -79,3 +79,18 @@
 .body{
  background:  hsla(240,7%,97%,1);
 }
+
+.shimmer-container{
+ display: flex;
+ flex-wrap: wrap;
+  margin: 32px 16px;
+}
+
+.shimmer-card{
+  margin-right: 40px;
+  margin-bottom: 30px;
+  width: 19.5rem;
+  height: 200px;
+  border-radius: 16px;
+  background-color:  #C2C2C2;
+}
