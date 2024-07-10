@@ -20,30 +20,25 @@ const Body = () => {
      console.log( listOfRestaurants);
   };
   return (
+   
     <div className="body">
       <Banner/>
-      <div className="search">Search</div>
-      <button
-        className="filter-btn"
-        onClick={() => {
-          const filteredList = listOfRestaurants.filter(
-            (res) => (res.info.avgRating) > 4.2
-          );
-          setListOfRestaurants(filteredList);
-        }}
-      >
-        Top Rating Restaurant
-      </button>
-      {(listOfRestaurants.length === 0)? 
-        <div>
-         <Shimmer/> 
-        </div> : 
-      <div className="restaurant-conatiner">
-        {listOfRestaurants.map((restaurants) => (
-          <RestaurantCard key={restaurants.info.id} restData={restaurants}  />
-        ))}
-      </div>
-       } 
+      {listOfRestaurants.length===0 ?<Shimmer/> : 
+      (<><div className="search">Search</div><button
+          className="filter-btn"
+          onClick={() => {
+            const filteredList = listOfRestaurants.filter(
+              (res) => (res.info.avgRating) > 4.2
+            );
+            setListOfRestaurants(filteredList);
+          } }
+        >
+          Top Rating Restaurant
+        </button><div className="restaurant-conatiner">
+            {listOfRestaurants.map((restaurants) => (
+              <RestaurantCard key={restaurants.info.id} restData={restaurants} />
+            ))}
+          </div></>)}
     </div>
   );
 };
