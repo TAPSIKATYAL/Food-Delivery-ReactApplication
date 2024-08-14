@@ -2,8 +2,8 @@ import {STAR_ICON} from "../utils/constant";
 const RestaurantCard = (props) => {
     const { restData, id } = props; 
     const imageUrl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
-    console.log("data of card is");
-    console.log(restData);
+    // console.log("data of card is");
+    // console.log(restData);
     const { cloudinaryImageId, name, locality, avgRatingString, cuisines=[], costForTwo, o2FeaturedImage ={} } =restData?.info|| {};// ({resName, cuisine}) Destructring of object
     
     return(

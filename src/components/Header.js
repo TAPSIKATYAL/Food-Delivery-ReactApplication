@@ -1,5 +1,8 @@
 import {LOGO_URL} from "../utils/constant";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 const Header = () => {
+  useEffect(()=> { console.log("useEffect called")});
     return (
       <div className="headercontainer">
         <div className="logo-container">
@@ -7,9 +10,9 @@ const Header = () => {
         </div>
         <div className="nav-items">
           <ul>
-            <li><a href="" className="linkable-nav-items">Home</a></li>
-            <li><a href="" className="linkable-nav-items">About Us</a></li>
-            <li><a href="" className="linkable-nav-items">Contact Us</a></li>
+            <li><Link to="/" className="linkable-nav-items">Home</Link></li>
+            <li><Link to="/about-us" className="linkable-nav-items">About Us</Link></li>
+            <li><Link to="/contact-us" className="linkable-nav-items">Contact Us</Link></li>
             <li><a href="" className="linkable-nav-items">Cart</a></li>
           </ul>
         </div>
