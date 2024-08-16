@@ -132,3 +132,7 @@
   margin-right: calc(11% + 24px);
     margin-top: 0px;
 }
+.rest-menu-container{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
