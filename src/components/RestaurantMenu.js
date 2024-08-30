@@ -1,23 +1,11 @@
-import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 import {STAR_ICON} from "../utils/constant";
-import { MENU_URL } from "../utils/constant";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from "react-router-dom";
 const RestaurantMenu = () => {
-    const[restInfo, setRestInfo] = useState(null);
     const {resId} = useParams();
     console.log(resId);
-    //useEffect hooks which has 2 arguments the first is callback function and second is optional arguments
-useEffect(()=>{
-fetchMenu();
-},[]);
-const fetchMenu = async() =>{
-const data = await fetch(MENU_URL + resId);
-const json = await data.json();
-setRestInfo(json.data);
-
-}
-console.log(restInfo);
+    const restInfo = useRestaurantMenu(resId);
 if(restInfo === null) return <Shimmer/>;
 const {name, cuisines, costForTwoMessage, avgRatingString, totalRatingsString, areaName} = restInfo?.cards[2]?.card?.card?.info;
 
@@ -25,8 +13,6 @@ const cardsArray = restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
 const cardDetails = cardsArray.map((cardItem)=>  cardItem?.card?.card);
 console.log(cardDetails)
 cardDetails.shift();
-
-
 return (
     <div className="rest-menu-container">
         <h1>{name}</h1>
@@ -75,8 +61,6 @@ return (
     }
     </div>
 )
-
-
 }
 
 export default RestaurantMenu;

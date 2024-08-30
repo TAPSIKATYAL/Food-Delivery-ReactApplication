@@ -10,7 +10,7 @@ const RestaurantCard = (props) => {
       <div className="restaurant-card">
        <img src={o2FeaturedImage.url || `${imageUrl}${cloudinaryImageId}` } className="food-image"></img>
       <div className="restro-name">{name}</div>
-      <div className="restro-info">{locality.name}</div>
+      <div className="restro-info">{locality}</div>
       <div className="restro-info">
         <img src={STAR_ICON} className="star-icon"></img>
         {" "+ avgRatingString}
