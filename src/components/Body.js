@@ -3,9 +3,11 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Banner from "./Banner";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestraunts, setFilteredRestraunts] = useState([]);
+  const onlineStatus = useOnlineStatus();
   //When the useState variable changed whole component render again. React check
   useEffect(() => {
     fetchData();
@@ -29,6 +31,12 @@ console.log(searchFood);
     setFilteredRestraunts(rest);
     console.log(listOfRestaurants);
   };
+  
+  if(onlineStatus === false){
+     return(
+     <h1>Looks like you are offline</h1>
+    );
+  }
   return (
     <div className="body">
       <Banner />
