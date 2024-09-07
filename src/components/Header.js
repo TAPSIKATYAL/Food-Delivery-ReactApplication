@@ -13,6 +13,7 @@ const Header = () => {
         <div className="nav-items">
           <ul>
             <li className="linkable-nav-items">Online Status {onlineStatus ? "✅" : "⛔"}</li>
+            <li><Link to="/Grocery" className="linkable-nav-items">Grocery</Link></li>
             <li><Link to="/" className="linkable-nav-items">Home</Link></li>
             <li><Link to="/about-us" className="linkable-nav-items">About Us</Link></li>
             <li><Link to="/contact-us" className="linkable-nav-items">Contact Us</Link></li>
