@@ -44,6 +44,6 @@ To run this project locally, follow these steps:
     npm install
 6. Run the development server:
    ```bash
-  npm run start
+   npm run start
 
 
