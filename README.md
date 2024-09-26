@@ -35,12 +35,15 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clonehttps://github.com/TAPSIKATYAL/Food-Delivery-ReactApplication.git
+   git clone https://github.com/TAPSIKATYAL/Food-Delivery-ReactApplication.git
 2. Navigate into the project directory:
+    ```bash
     cd Food-Delivery-ReactApplication
-3. Install the dependencies:
+4. Install the dependencies:
+   ```bash
     npm install
-4. Run the development server:
+6. Run the development server:
+   ```bash
   npm run start
 
 
