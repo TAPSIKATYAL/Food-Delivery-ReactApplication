@@ -36,7 +36,11 @@
   margin: 10px;
 }
 .search {
-  padding: 15px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  flex-direction: column;
 }
 .restaurant-conatiner {
   display: flex;
@@ -143,4 +147,40 @@
 #discount-info{
   margin: 10px 25px;
   font-family: "serif";
+}
+.search-button{
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #141514df;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.search-input{
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 250px;
+  transition: all 0.3s ease;
+}
+.filter-btn{
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 250px;
+  transition: all 0.3s ease;
+}
+.search > .search-input,
+.search > .search-button {
+  display: inline-block;
+}
+.search > .filter-btn {
+  margin-top: 10px; /* Add space from the previous row */
 }

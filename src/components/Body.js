@@ -48,39 +48,44 @@ const Body = () => {
       ) : (
         <>
           <div className="search">
-            <input id="search" type="text" value={searchFood} onChange={(e) => setSearchFood(e.target.value)} />
+            <div className="search-line">
+              <input className="search-input" id="search" type="text" value={searchFood} onChange={(e) => setSearchFood(e.target.value)} />
+              <button
+                onClick=
+                {() => {
+                  const filteredRestraunt = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchFood.toLowerCase()));
+                  console.log(filteredRestraunts);
+                  setFilteredRestraunts(filteredRestraunt);
+                }}
+                className="search-button"
+              > Search</button>
+            </div>
+
             <button
-              onClick=
-              {() => {
-                const filteredRestraunt = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchFood.toLowerCase()));
-                console.log(filteredRestraunts);
-                setFilteredRestraunts(filteredRestraunt);
+              className="filter-btn"
+              onClick={() => {
+                const filteredList = listOfRestaurants.filter(
+                  (res) => res.info.avgRating > 4.2
+                );
+                setFilteredRestraunts(filteredList);
               }}
-            > Search</button>
+            >
+              Top Rating Restaurant
+            </button>
           </div>
-          <button
-            className="filter-btn"
-            onClick={() => {
-              const filteredList = listOfRestaurants.filter(
-                (res) => res.info.avgRating > 4.2
-              );
-              setFilteredRestraunts(filteredList);
-            }}
-          >
-            Top Rating Restaurant
-          </button>
+
           <div className="restaurant-conatiner">
             {filteredRestraunts.map((restaurants) => (
-            
-                <Link key={restaurants.info.id} to={"/restaurants/" + restaurants.info.id} className="res-links">
-                  {
-                    restaurants.info.aggregatedDiscountInfoV3.header ? <RestaurantCardWithDiscount restData={restaurants} /> :
-                      <RestaurantCard
-                        restData={restaurants}
-                      />
-                  }
 
-                </Link>
+              <Link key={restaurants.info.id} to={"/restaurants/" + restaurants.info.id} className="res-links">
+                {
+                  restaurants.info.aggregatedDiscountInfoV3.header ? <RestaurantCardWithDiscount restData={restaurants} /> :
+                    <RestaurantCard
+                      restData={restaurants}
+                    />
+                }
+
+              </Link>
             ))}
           </div>
         </>
