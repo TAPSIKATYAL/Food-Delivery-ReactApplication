@@ -136,3 +136,11 @@
   margin-top: 100px;
   margin-bottom: 100px;
 }
+.res-links{
+  text-decoration: none;
+  color: black;
+}
+#discount-info{
+  margin: 10px 25px;
+  font-family: "serif";
+}
