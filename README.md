@@ -46,4 +46,5 @@ To run this project locally, follow these steps:
    ```bash
    npm run start
 
+<img width="1267" alt="image" src="https://github.com/user-attachments/assets/39c79379-1d67-4405-a8ea-382d0cf8137a" />
 
