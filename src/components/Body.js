@@ -1,5 +1,5 @@
 import Shimmer from "./Shimmer";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withDiscountInfo } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Banner from "./Banner";
 import { Link } from "react-router-dom";
@@ -12,10 +12,13 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
-const [searchFood, setSearchFood] = useState("");
-console.log(searchFood);
-{ console.log("list is")
-  listOfRestaurants.map((res)=> console.log(res.info))};
+  const [searchFood, setSearchFood] = useState("");
+  const RestaurantCardWithDiscount = withDiscountInfo(RestaurantCard);
+  console.log(searchFood);
+  {
+    console.log("list is")
+    listOfRestaurants.map((res) => console.log(res.info))
+  };
   const fetchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
@@ -31,10 +34,10 @@ console.log(searchFood);
     setFilteredRestraunts(rest);
     console.log(listOfRestaurants);
   };
-  
-  if(onlineStatus === false){
-     return(
-     <h1>Looks like you are offline</h1>
+
+  if (onlineStatus === false) {
+    return (
+      <h1>Looks like you are offline</h1>
     );
   }
   return (
@@ -44,17 +47,17 @@ console.log(searchFood);
         <Shimmer />
       ) : (
         <>
-          <div className="search">  
-            <input id="search" type="text" value={searchFood} onChange={(e) => setSearchFood(e.target.value)}/>
+          <div className="search">
+            <input id="search" type="text" value={searchFood} onChange={(e) => setSearchFood(e.target.value)} />
             <button
-             onClick=
+              onClick=
               {() => {
-                const filteredRestraunt = listOfRestaurants.filter((res)=> res.info.name.toLowerCase().includes(searchFood.toLowerCase()));
+                const filteredRestraunt = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchFood.toLowerCase()));
                 console.log(filteredRestraunts);
-              setFilteredRestraunts(filteredRestraunt);
-            }}
+                setFilteredRestraunts(filteredRestraunt);
+              }}
             > Search</button>
-            </div>
+          </div>
           <button
             className="filter-btn"
             onClick={() => {
@@ -68,12 +71,16 @@ console.log(searchFood);
           </button>
           <div className="restaurant-conatiner">
             {filteredRestraunts.map((restaurants) => (
-              <Link key={restaurants.info.id} to={"/restaurants/"+ restaurants.info.id}>
-              <RestaurantCard
-                
-                restData={restaurants}
-              />
-              </Link>
+            
+                <Link key={restaurants.info.id} to={"/restaurants/" + restaurants.info.id} className="res-links">
+                  {
+                    restaurants.info.aggregatedDiscountInfoV3.header ? <RestaurantCardWithDiscount restData={restaurants} /> :
+                      <RestaurantCard
+                        restData={restaurants}
+                      />
+                  }
+
+                </Link>
             ))}
           </div>
         </>
