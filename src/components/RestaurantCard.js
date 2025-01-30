@@ -28,7 +28,7 @@ export const withDiscountInfo = (RestaurantCard) => {
     console.log(props)
     return (
       <div id="enhanced-Card">
-        <h3 id="discount-info">{header + " " + subHeader}</h3>
+       {subHeader ? <h3 id="discount-info">{header + " " + subHeader}</h3> : ""} 
         <RestaurantCard {...props}/>
       </div>
     );

@@ -79,7 +79,7 @@ const Body = () => {
 
               <Link key={restaurants.info.id} to={"/restaurants/" + restaurants.info.id} className="res-links">
                 {
-                  restaurants?.info?.aggregatedDiscountInfoV3?.header ? <RestaurantCardWithDiscount restData={restaurants} /> :
+                  restaurants?.info?.aggregatedDiscountInfoV3?.length ? <RestaurantCardWithDiscount restData={restaurants} /> :
                     <RestaurantCard
                       restData={restaurants}
                     />
