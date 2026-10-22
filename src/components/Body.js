@@ -14,14 +14,9 @@ const Body = () => {
   }, []);
   const [searchFood, setSearchFood] = useState("");
   const RestaurantCardWithDiscount = withDiscountInfo(RestaurantCard);
-  console.log(searchFood);
-  {
-    console.log("list is")
-    listOfRestaurants.map((res) => console.log(res.info))
-  };
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.0458752&lng=78.8382644&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
@@ -29,11 +24,10 @@ const Body = () => {
     const rest =
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    console.log(rest[0].info.avgRatingString);
     setListOfRestaurants(rest);
     setFilteredRestraunts(rest);
     console.log(listOfRestaurants);
-  };
+   };
 
   if (onlineStatus === false) {
     return (
